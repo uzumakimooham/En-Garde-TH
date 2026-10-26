@@ -1,0 +1,58 @@
+/* En-Garde-TH — blueprint theme (black & white, day/night) */
+:root{
+  --bg:#fff;--fg:#0a0a0a;--line:rgba(10,10,10,.14);--line2:rgba(10,10,10,.5);--panel:#fff;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0a0a0a;--fg:#f4f4f4;--line:rgba(244,244,244,.15);--line2:rgba(244,244,244,.55);--panel:#0a0a0a;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0a0a0a;--fg:#f4f4f4;--line:rgba(244,244,244,.15);--line2:rgba(244,244,244,.55);--panel:#0a0a0a;color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font:400 16px/1.7 "Noto Sans Thai",system-ui,sans-serif;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:24px 24px;
+  transition:background-color .25s,color .25s;
+}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace;letter-spacing:.04em}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:2px solid var(--fg)}
+.bar{max-width:1040px;margin:auto;display:flex;align-items:center;gap:16px;padding:12px 20px;flex-wrap:wrap}
+.logo{font:700 18px "JetBrains Mono",monospace;margin-right:auto;display:flex;align-items:center;gap:10px}
+nav{display:flex;gap:8px}
+button,nav a{font:inherit;font-size:14px;color:var(--fg);background:var(--panel);border:1.5px solid var(--fg);padding:6px 14px;cursor:pointer;text-decoration:none;display:inline-block}
+button:hover,nav a:hover,nav a[aria-current="page"]{background:var(--fg);color:var(--bg)}
+
+/* layout */
+main{max-width:1040px;margin:auto;padding:32px 20px 64px}
+.frame{border:2px solid var(--fg);background:var(--panel);padding:28px;position:relative;margin-bottom:28px}
+.frame::before{content:attr(data-tag);position:absolute;top:-11px;left:16px;background:var(--bg);padding:0 8px;font:700 12px "JetBrains Mono",monospace}
+h1{font:700 clamp(34px,7vw,64px)/1.05 "JetBrains Mono",monospace;margin:0 0 12px}
+h2{font:700 20px "JetBrains Mono",monospace;margin:0 0 10px}
+p{margin:0 0 12px}
+.note{font-size:13px;opacity:.7}
+.dim{border-top:1px dashed var(--line2);margin-top:18px;padding-top:6px;font-size:12px;display:flex;justify-content:space-between}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.cell{border:1.5px solid var(--fg);padding:18px;background:var(--panel)}
+.big{font:700 34px "JetBrains Mono",monospace}
+
+/* shop */
+.prod .img{height:130px;border:1.5px dashed var(--line2);display:grid;place-items:center;margin-bottom:12px}
+.prod svg{width:80px;height:80px;stroke:var(--fg);fill:none;stroke-width:2}
+.price{font:700 18px "JetBrains Mono",monospace;margin:6px 0 10px}
+.cart{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+ul.items{margin:10px 0 0;padding:0;list-style:none;font-size:14px}
+ul.items li{display:flex;justify-content:space-between;border-bottom:1px dotted var(--line2);padding:4px 0}
+
+footer{border-top:2px solid var(--fg);text-align:center;padding:16px;font-size:12px;background:var(--bg)}
